@@ -7,27 +7,20 @@ import { CartContext } from '../../context/CartContext';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
 const TransferPayment = () => {
-
   const { cart, getSelectedShippingMethod, getTotalPrice, discountInfo, getCustomerInformation, clearCart } = useContext(CartContext)! || {};
   const subtotal = getTotalPrice ? getTotalPrice() : 0;
   const selectedShippingMethod = getSelectedShippingMethod();
-
-
-
-
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [file, setFile] = useState<File | null>(null);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [uploadMessage, setUploadMessage] = useState<string>('');
-
-
   const shippingCost = selectedShippingMethod ? selectedShippingMethod.price : 0;
   const discountPercentage = discountInfo?.discountPercentage ?? 0;
   const maxDiscountAmount = discountInfo?.maxDiscountAmount ?? 0;
   const discountAmount = (discountPercentage / 100) * (subtotal + shippingCost);
- 
+
   let total = (subtotal + shippingCost) * (1 - (discountPercentage ?? 0) / 100);
 
   if (discountAmount < maxDiscountAmount) {
@@ -36,13 +29,11 @@ const TransferPayment = () => {
     total = subtotal + shippingCost - maxDiscountAmount;
   }
 
-
-const userData = getCustomerInformation()
+  const userData = getCustomerInformation()
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const selectedFile = e.target.files[0];
-
       setFile(selectedFile);
       setUploadMessage('');
     }
@@ -71,17 +62,12 @@ const userData = getCustomerInformation()
         status: "pending",
         paymentType: "transferencia", 
         transferUrl: url, 
-
-        
       };
-      const ordersCollection = collection(db, "orders");
 
-      const orderDocRef = await addDoc(ordersCollection, {
-        ...order,
-      });
+      const ordersCollection = collection(db, "orders");
+      const orderDocRef = await addDoc(ordersCollection, { ...order });
 
       console.log("Orden creada con éxito:", orderDocRef.id);
-
 
       navigate("/checkout/pendingverification");
       setSnackbarMessage('Comprobante cargado con éxito.');
@@ -101,11 +87,29 @@ const userData = getCustomerInformation()
 
   return (
     <div style={{ textAlign: 'center', marginTop: '20px', marginBottom: '20px' }}>
+      {/* Primer Card */}
       <h2 style={{ color: 'black' }}>Transferencia Bancaria</h2>
-      <h4 style={{ color: 'black' }}>Banco: HSBC</h4>
-      <h4 style={{ color: 'black' }}>Cuenta N°:12345678</h4>
+      <Card style={{ maxWidth: 345, margin: 'auto', borderRadius: '10px', overflow: 'hidden', marginBottom: '20px' }}>
+        <CardContent>  
+          <h4 style={{ color: 'black' }}>Mercado Pago</h4>
+          <h4 style={{ color: 'black' }}>Yenny Karin Almeron Juarez</h4>
+          <h4 style={{ color: 'black' }}>CVU: 0000003100020209913592</h4>
+          <h4 style={{ color: 'black' }}>Alias: Spiritandwife.Jesus.</h4>
+          <h4 style={{ color: 'black' }}>CUIT/CUIL: 27958882276</h4>
+        </CardContent>
+      </Card>
+
+      {/* Segunda Card */}
+      <Card style={{ maxWidth: 345, margin: 'auto', borderRadius: '10px', overflow: 'hidden', marginBottom: '20px' }}>
+        <CardContent>
+          <h4 style={{ color: 'black' }}>Banco Frances </h4>
+          <h4 style={{ color: 'black' }}>Cta. Corriente </h4>
+          <h4 style={{ color: 'black' }}>CBU: 0170301420000031595926 </h4>
+        </CardContent>
+      </Card>
+
       {file && (
-        <Card style={{ maxWidth: 345, margin: 'auto', borderRadius: '10px', overflow: 'hidden', marginBottom:"20px" }}>
+        <Card style={{ maxWidth: 345, margin: 'auto', borderRadius: '10px', overflow: 'hidden', marginBottom: '20px' }}>
           <CardContent>
             <p>Vista Previa</p>
           </CardContent>
@@ -123,14 +127,17 @@ const userData = getCustomerInformation()
           </CardContent>
         </Card>
       )}
+
       <Button variant="contained" color="primary" onClick={openFileInput}>
         {file ? 'Cambiar Comprobante' : 'Cargar Comprobante'}
       </Button>
+
       {file && (
-        <Button variant="contained" color="primary" onClick={handleUpload} style={{ margin: '20px'}}>
+        <Button variant="contained" color="primary" onClick={handleUpload} style={{ margin: '20px' }}>
           Enviar Comprobante
         </Button>
       )}
+
       <input
         ref={fileInputRef}
         type="file"
@@ -138,6 +145,7 @@ const userData = getCustomerInformation()
         onChange={handleImageChange}
         style={{ display: 'none' }}
       />
+
       <p>{uploadMessage}</p>
       <Snackbar open={snackbarOpen} autoHideDuration={4000} onClose={() => setSnackbarOpen(false)} message={snackbarMessage} />
     </div>
