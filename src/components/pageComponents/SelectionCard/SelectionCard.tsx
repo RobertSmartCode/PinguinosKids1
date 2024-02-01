@@ -115,6 +115,7 @@ const handleAddToCart = () => {
       selectedSize: selectedSize,
     };
     addToCart(cartItem);
+    onClose()
   } else {
     setShowError(true);
     setTimeout(() => {
