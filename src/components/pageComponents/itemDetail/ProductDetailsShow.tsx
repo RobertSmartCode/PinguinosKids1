@@ -44,31 +44,32 @@ const ProductDetailShow: React.FC<ProductDetailShowProps> = () => {
       return <div>Loading...</div>;
     }
 
-  return (
-    <div style={{ margin: "20px" }}>
-      <h2>{product.title}</h2>
-      <p>{product.description}</p>
-      <div>
-        <strong>Elasticity:</strong> {product.elasticity}
+    return (
+      <div style={{ margin: "20px" }}>
+        <h2>{product.title}</h2>
+        <p><strong>Descripción:</strong>{product.description}</p>
+        <div>
+          <strong>Elasticidad:</strong> {product.elasticity}
+        </div>
+        <div>
+          <strong>Grosor:</strong> {product.thickness}
+        </div>
+        <div>
+          <strong>Transpirabilidad:</strong> {product.breathability}
+        </div>
+        <div>
+          <strong>Temporada:</strong> {product.season}
+        </div>
+        <div>
+          <strong>Material:</strong> {product.material}
+        </div>
+        <div>
+          <strong>Detalles:</strong> {product.details}
+        </div>
+        {/* Puedes agregar más detalles según sea necesario */}
       </div>
-      <div>
-        <strong>Thickness:</strong> {product.thickness}
-      </div>
-      <div>
-        <strong>Breathability:</strong> {product.breathability}
-      </div>
-      <div>
-        <strong>Season:</strong> {product.season}
-      </div>
-      <div>
-        <strong>Material:</strong> {product.material}
-      </div>
-      <div>
-        <strong>Details:</strong> {product.details}
-      </div>
-      {/* Puedes agregar más detalles según sea necesario */}
-    </div>
-  );
+    );
+    
 };
 
 export default ProductDetailShow;
