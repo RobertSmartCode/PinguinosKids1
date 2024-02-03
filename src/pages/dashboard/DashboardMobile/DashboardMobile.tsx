@@ -24,21 +24,21 @@ const Dashboard: React.FC = () => {
 
   return (
     <Box sx={containerStyles}>
-        <CssBaseline />
-        <Link to="/" style={{ textDecoration: 'none' }}>
-            <IconButton style={{ fontSize: '4rem' }}>
-              <HomeIcon />
-            </IconButton>
-          </Link>
-        <MyOrders />
-        <ProductAddForm />
-        <ProductsList />
-        <PaymentMethodsList/>
-        <ShippingMethodsList/>
-        <StoreDataList/>
-        <PromoCode/>
+      <CssBaseline />
+      <Link to="/" style={{ textDecoration: 'none' }}>
+        <IconButton>
+          <HomeIcon style={{ fontSize: '3rem', marginTop:"30px" }} />
+        </IconButton>
+      </Link>
+      <MyOrders />
+      <ProductAddForm />
+      <ProductsList />
+      <PaymentMethodsList />
+      <ShippingMethodsList />
+      <StoreDataList />
+      <PromoCode />
     </Box>
-  );
+  );  
 };
 
 export default Dashboard;
