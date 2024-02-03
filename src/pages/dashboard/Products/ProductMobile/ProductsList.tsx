@@ -135,6 +135,8 @@ const ProductsList = () => {
       sx={{
         backgroundColor: customColors.primary.main,
         color: customColors.secondary.contrastText,
+        width: '70vw', // 70% del ancho de la ventana
+        margin: '0 auto', // Centra horizontalmente
       }}
     >
       Mis Productos

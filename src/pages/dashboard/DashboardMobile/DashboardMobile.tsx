@@ -23,15 +23,13 @@ const containerStyles = {
 const Dashboard: React.FC = () => {
 
   return (
-    <Box 
-        sx={containerStyles}>
-          <CssBaseline />
+    <Box sx={containerStyles}>
+        <CssBaseline />
         <Link to="/" style={{ textDecoration: 'none' }}>
-            <IconButton>
+            <IconButton style={{ fontSize: '4rem' }}>
               <HomeIcon />
             </IconButton>
           </Link>
-        
         <MyOrders />
         <ProductAddForm />
         <ProductsList />
