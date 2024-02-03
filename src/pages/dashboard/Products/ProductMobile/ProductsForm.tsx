@@ -765,9 +765,11 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
               </div>
             </Grid>
   
-            {/* Maneja la carga de las imagenes para Crear */}
-            <Grid container justifyContent="center" alignItems="center">
-            <Grid item xs={12}>
+          {/* Maneja la carga de las imágenes para Crear */}
+          
+            <Grid item xs={12} style={{ alignItems: "center" }}>
+           
+  
               <Button
                 variant="contained"
                 color="primary"
@@ -790,10 +792,12 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                 style={{ display: "none" }}
               />
               <p>{uploadMessage}</p>
+         
+
             </Grid>
 
             {/* Botón de crear o modificar*/}
-            <Grid item xs={12} marginBottom="100px" style={{ margin: '0 auto' }}>
+            <Grid item xs={12} style={{ alignItems: "center" }} >
               {!isLoading && (
                 <Button
                   variant="contained"
@@ -805,8 +809,9 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                 </Button>
               )}
             </Grid>
-          </Grid>
-          </Grid>
+        
+
+        </Grid>
         </form>
       </Paper>
       <Snackbar
