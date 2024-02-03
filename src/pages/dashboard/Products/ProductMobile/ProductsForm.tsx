@@ -421,7 +421,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             gap: "20px",
           }}
         >
-          <Grid container spacing={2}>
+          <Grid container spacing={2} >
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
@@ -765,15 +765,16 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
               </div>
             </Grid>
   
-          {/* Maneja la carga de las imágenes para Crear */}
-          
-            <Grid item xs={12} style={{ alignItems: "center" }}>
-           
-  
+            <Grid container spacing={2} style={{ textAlign: 'center', alignItems: 'center', marginRight:"60px" }}>
+            <Grid item xs={12} style={{ marginTop: "20px" }}>
               <Button
                 variant="contained"
                 color="primary"
                 onClick={openFileInput}
+                sx={{
+                  width: '90%', 
+                  margin: '0 auto', 
+                }}
               >
                 Subir foto
               </Button>
@@ -792,24 +793,28 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                 style={{ display: "none" }}
               />
               <p>{uploadMessage}</p>
-         
-
             </Grid>
 
             {/* Botón de crear o modificar*/}
-            <Grid item xs={12} style={{ alignItems: "center", marginBottom:"100px" }} >
+            <Grid item xs={12} style={{ marginBottom: "120px" }}>
               {!isLoading && (
                 <Button
                   variant="contained"
                   color="primary"
                   type="submit"
                   disabled={isLoading}
+                  sx={{
+                    width: '90%', 
+                    margin: '0 auto',
+                  }}
                 >
                   {productSelected ? "Modificar" : "Crear"}
                 </Button>
               )}
             </Grid>
-        
+          </Grid>
+
+
 
         </Grid>
         </form>
