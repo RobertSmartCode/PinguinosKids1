@@ -232,7 +232,7 @@ const ProductsList = () => {
           <IconButton
             aria-label="close"
             onClick={handleClose}
-            sx={{ position: 'absolute', top: '20px', right: '20px' }}
+            sx={{ position: 'absolute', top: '20px', right: '20px', bottom:"100px" }}
           >
             <CloseIcon />
           </IconButton>
