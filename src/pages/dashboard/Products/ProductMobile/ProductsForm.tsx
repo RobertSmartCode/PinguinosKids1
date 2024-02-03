@@ -706,8 +706,8 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                         
                       <CardActions
                        style={{
-                        marginLeft: 'auto', // Añade esta línea para mover el CardActions a la derecha
-                        width: 'fit-content', // Ajusta el ancho según sea necesario
+                        marginLeft: 'auto', 
+                        width: 'fit-content', 
                       }}
                       >
                         <Button
@@ -745,8 +745,8 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                       
                       <CardActions
                        style={{
-                        marginLeft: 'auto', // Añade esta línea para mover el CardActions a la derecha
-                        width: 'fit-content', // Ajusta el ancho según sea necesario
+                        marginLeft: 'auto', 
+                        width: 'fit-content', 
                       }}
                       >
                         <Button
@@ -766,6 +766,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             </Grid>
   
             {/* Maneja la carga de las imagenes para Crear */}
+            <Grid container justifyContent="center" alignItems="center">
             <Grid item xs={12}>
               <Button
                 variant="contained"
@@ -790,9 +791,9 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
               />
               <p>{uploadMessage}</p>
             </Grid>
-  
+
             {/* Botón de crear o modificar*/}
-            <Grid item xs={12} marginBottom="100px">
+            <Grid item xs={12} marginBottom="100px" style={{ margin: '0 auto' }}>
               {!isLoading && (
                 <Button
                   variant="contained"
@@ -803,8 +804,8 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
                   {productSelected ? "Modificar" : "Crear"}
                 </Button>
               )}
-             
             </Grid>
+          </Grid>
           </Grid>
         </form>
       </Paper>
@@ -817,8 +818,6 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     </Container>
   );
   
-
-
 
 };
 

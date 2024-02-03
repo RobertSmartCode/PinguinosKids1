@@ -225,19 +225,26 @@ const ProductsList = () => {
       </TableContainer>
 
         <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={{ position: 'relative' }}>
-          <IconButton
-            aria-label="close"
-            onClick={handleClose}
-            sx={{ position: 'absolute', top: '20px', right: '20px', bottom:"100px" }}
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
           >
-            <CloseIcon />
-          </IconButton>
+
+        <Box sx={{ position: 'relative' }}>
+        <IconButton
+          aria-label="close"
+          onClick={handleClose}
+          sx={{
+            position: 'absolute',
+            top: '5%',    
+            right: '5%',   
+            bottom: 'auto',  
+          }}
+        >
+          <CloseIcon />
+        </IconButton>
+
 
           <ProductsForm
             handleClose={handleClose}
