@@ -797,7 +797,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
             </Grid>
 
             {/* Botón de crear o modificar*/}
-            <Grid item xs={12} style={{ alignItems: "center" }} >
+            <Grid item xs={12} style={{ alignItems: "center", marginBottom:"100px" }} >
               {!isLoading && (
                 <Button
                   variant="contained"
