@@ -4,12 +4,12 @@ import {
   CssBaseline,
   Grid,
   Box,
-  Divider,
+  // Divider,
 } from "@mui/material";
 // import PromotionBar from "./PromotionBar/PromotionBar";
 import Logo from "./Logo/Logo";
 import SearchBar from "./SearchBar/SearchBar";
-import MenuButton from "./MenuButton/MenuButton";
+// import MenuButton from "./MenuButton/MenuButton";
 import LoginButton from "./LoginButton/LoginButton";
 import { Outlet } from "react-router-dom";
 import MobileCart from "../NavbarMobile/MobileCart/MobileCart";
@@ -56,7 +56,7 @@ const NavbarDesktop = () => {
         </Toolbar>
       </AppBar>
 
-      {/* Parte inferior categorías y tienda (25% del espacio) */}
+      {/* Parte inferior categorías y tienda (25% del espacio)
       <Grid container item lg={12} justifyContent="center">
         <Grid item lg={12}>
           <Divider sx={{ backgroundColor: 'black', height: '0.1px' }} />
@@ -64,7 +64,7 @@ const NavbarDesktop = () => {
         <Grid item lg={12} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
           <MenuButton />
         </Grid>
-      </Grid>
+      </Grid> */}
 
       {/* Contenedor component="main" para <Outlet /> */}
       <Box

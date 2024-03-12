@@ -8,6 +8,7 @@ import {
 
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../../context/AuthContext';
+import   clearCart   from '../../context/CartContext';
 
 import { useLocation } from "react-router-dom";
 
@@ -46,6 +47,9 @@ const PaymentSuccess = () => {
     // Limpia el almacenamiento local independientemente del resultado
     localStorage.removeItem("order");
 
+    // Limpiar Carrito
+    
+    clearCart
      // Redirige al usuario
        // Agregar un retraso de 3 segundos antes de redirigir
        const delay = 3000; // 3 segundos

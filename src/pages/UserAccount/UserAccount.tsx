@@ -145,7 +145,7 @@ const UserOrders: React.FC = () => {
                       {product.title}
                     </Typography>
                     <Typography variant="body2" gutterBottom>
-                      Precio: {product.unit_price} | Cantidad: {product.quantity} | SKU: {product.sku}
+                      Precio: {product.unit_price} | Cantidad: {product.quantity} 
                     </Typography>
                   </div>
                 ))}
