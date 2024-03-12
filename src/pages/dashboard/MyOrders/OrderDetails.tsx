@@ -44,6 +44,9 @@ const UserOrders: React.FC = () => {
           date: order.data().date.toDate(),
         })) as Order[];
 
+        // Ordenar las órdenes del más nuevo al más viejo
+        newArr.sort((a, b) => b.date.getTime() - a.date.getTime());
+
         setMyOrders(newArr);
       })
       .catch((error) => console.log(error));

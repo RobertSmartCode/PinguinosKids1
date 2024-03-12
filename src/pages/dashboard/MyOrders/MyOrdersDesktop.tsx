@@ -44,6 +44,9 @@ const MyOrdersDesktop: React.FC = () => {
           date: order.data().date.toDate(),
         })) as Order[];
 
+        // Ordenar las órdenes del más nuevo al más viejo
+        newArr.sort((a, b) => b.date.getTime() - a.date.getTime());
+
         setMyOrders(newArr);
       })
       .catch((error) => console.log(error));
@@ -123,69 +126,63 @@ const MyOrdersDesktop: React.FC = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-
-
         <Card style={{ width: '70%', margin: 'auto', marginTop: '5%', maxHeight: '80%', overflowY: 'auto' }}>
+          <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Typography variant="h6" gutterBottom>
+              Detalles del Pedido Seleccionado
+            </Typography>
+            {selectedOrder && (
+              <div>
+                <Typography variant="body1">Total: {selectedOrder.total}</Typography>
+                <Typography variant="body1">Tipo de Pago: {selectedOrder.paymentType}</Typography>
+                <Typography variant="body1">Email: {selectedOrder.userData.email}</Typography>
+                <Typography variant="body1">Recibe Ofertas: {selectedOrder.userData.receiveOffers ? 'Sí' : 'No'}</Typography>
+                <Typography variant="body1">País: {selectedOrder.userData.country}</Typography>
+                <Typography variant="body1">Documento de Identificación: {selectedOrder.userData.identificationDocument}</Typography>
+                <Typography variant="body1">Nombre: {selectedOrder.userData.firstName}</Typography>
+                <Typography variant="body1">Apellido: {selectedOrder.userData.lastName}</Typography>
+                <Typography variant="body1">Teléfono: {selectedOrder.userData.phone}</Typography>
+                <Typography variant="body1">Recibirá el envío otra Persona: {selectedOrder.userData.isOtherPerson ? 'Sí' : 'No'}</Typography>
+                {selectedOrder.userData.isOtherPerson && (
+                  <>
+                    <Typography variant="body1">Nombre de Otra Persona: {selectedOrder.userData.otherPersonFirstName}</Typography>
+                    <Typography variant="body1">Apellido de Otra Persona: {selectedOrder.userData.otherPersonLastName}</Typography>
+                  </>
+                )}
+                <Typography variant="body1">Calle y Número: {selectedOrder.userData.streetAndNumber}</Typography>
+                <Typography variant="body1">Departamento: {selectedOrder.userData.department}</Typography>
+                <Typography variant="body1">Barrio: {selectedOrder.userData.neighborhood}</Typography>
+                <Typography variant="body1">Ciudad: {selectedOrder.userData.city}</Typography>
+                <Typography variant="body1">Código Postal: {selectedOrder.userData.postalCode}</Typography>
+                <Typography variant="body1">Provincia: {selectedOrder.userData.province}</Typography>
+                <Typography variant="body1">Tipo de Cliente: {selectedOrder.userData.customerType}</Typography>
+                {selectedOrder.userData.customerType === 'invoice' && (
+                  <Typography variant="body1">CUIT/CUIL: {selectedOrder.userData.cuilCuit}</Typography>
+                )}
+                {selectedOrder.userData.customerType === 'invoice' && (
+                  <Typography variant="body1">Nombre de la Empresa: {selectedOrder.userData.businessName}</Typography>
+                )}
+                <Typography variant="body1">Productos:</Typography>
+                {selectedOrder.items.map((product, index) => (
+                  <div key={index}>
+                    {product.images && product.images.length > 0 && (
+                      <img src={product.images[0]} alt={product.title} style={{ width: '50px', height: '50px', margin: '5px' }} />
+                    )}
+                    <Typography variant="body2" gutterBottom>
+                      {product.title}
+                    </Typography>
+                    <Typography variant="body2" gutterBottom>
+                      Precio: {product.unit_price} | Cantidad: {product.quantity} | SKU: {product.sku}
+                    </Typography>
+                  </div>
+                ))}
+              </div>
+            )}
             <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Typography variant="h6" gutterBottom>
-                Detalles del Pedido Seleccionado
-              </Typography>
-              {selectedOrder && (
-                <div>
-                  <Typography variant="body1">Total: {selectedOrder.total}</Typography>
-                  <Typography variant="body1">Tipo de Pago: {selectedOrder.paymentType}</Typography>
-                  <Typography variant="body1">Email: {selectedOrder.userData.email}</Typography>
-                  <Typography variant="body1">Recibe Ofertas: {selectedOrder.userData.receiveOffers ? 'Sí' : 'No'}</Typography>
-                  <Typography variant="body1">País: {selectedOrder.userData.country}</Typography>
-                  <Typography variant="body1">Documento de Identificación: {selectedOrder.userData.identificationDocument}</Typography>
-                  <Typography variant="body1">Nombre: {selectedOrder.userData.firstName}</Typography>
-                  <Typography variant="body1">Apellido: {selectedOrder.userData.lastName}</Typography>
-                  <Typography variant="body1">Teléfono: {selectedOrder.userData.phone}</Typography>
-                  <Typography variant="body1">Recibirá el envío otra Persona: {selectedOrder.userData.isOtherPerson ? 'Sí' : 'No'}</Typography>
-                  {selectedOrder.userData.isOtherPerson && (
-                    <>
-                      <Typography variant="body1">Nombre de Otra Persona: {selectedOrder.userData.otherPersonFirstName}</Typography>
-                      <Typography variant="body1">Apellido de Otra Persona: {selectedOrder.userData.otherPersonLastName}</Typography>
-                    </>
-                  )}
-                  <Typography variant="body1">Calle y Número: {selectedOrder.userData.streetAndNumber}</Typography>
-                  <Typography variant="body1">Departamento: {selectedOrder.userData.department}</Typography>
-                  <Typography variant="body1">Barrio: {selectedOrder.userData.neighborhood}</Typography>
-                  <Typography variant="body1">Ciudad: {selectedOrder.userData.city}</Typography>
-                  <Typography variant="body1">Código Postal: {selectedOrder.userData.postalCode}</Typography>
-                  <Typography variant="body1">Provincia: {selectedOrder.userData.province}</Typography>
-                  <Typography variant="body1">Tipo de Cliente: {selectedOrder.userData.customerType}</Typography>
-                  {selectedOrder.userData.customerType === 'invoice' && (
-                    <Typography variant="body1">CUIT/CUIL: {selectedOrder.userData.cuilCuit}</Typography>
-                  )}
-                  {selectedOrder.userData.customerType === 'invoice' && (
-                    <Typography variant="body1">Nombre de la Empresa: {selectedOrder.userData.businessName}</Typography>
-                  )}
-                  <Typography variant="body1">Productos:</Typography>
-                  {selectedOrder.items.map((product, index) => (
-                    <div key={index}>
-                      {product.images && product.images.length > 0 && (
-                        <img src={product.images[0]} alt={product.title} style={{ width: '50px', height: '50px', margin: '5px' }} />
-                      )}
-                      <Typography variant="body2" gutterBottom>
-                        {product.title}
-                      </Typography>
-                      <Typography variant="body2" gutterBottom>
-                        Precio: {product.unit_price} | Cantidad: {product.quantity} | SKU: {product.sku}
-                      </Typography>
-                    </div>
-                  ))}
-                </div>
-              )}
-              <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <Button variant="contained" onClick={handleModalClose}>Cerrar Detalles</Button>
-              </CardContent>
+              <Button variant="contained" onClick={handleModalClose}>Cerrar Detalles</Button>
             </CardContent>
-          </Card>
-
-
-
-
+          </CardContent>
+        </Card>
       </Modal>
     </Box>
   );
