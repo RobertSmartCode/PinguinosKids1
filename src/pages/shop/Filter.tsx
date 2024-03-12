@@ -12,8 +12,8 @@ const Filter: React.FC = () => {
   const isMobile = useMediaQuery('(max-width:600px)');
   // Lista de colores y tallas
 
-  const colorOptions = ["Azul", "Rojo", "Fuccia", "Nude"];
-  const sizeOptions = ["10", "12", "14", "16", "18"];
+  const colorOptions = ["Azul", "Rosado", "Fucsia", "Chicle", "Lila", "Gris", "Amarillo", "Verde", "Blanco"];
+  const sizeOptions = ["2", "3", "4", "5", "6","8", "10", "12", "14", "16", "18"];
 
 
   const { filter, updateFilter } = useFilterContext()!;

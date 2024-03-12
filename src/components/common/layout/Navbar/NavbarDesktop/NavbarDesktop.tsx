@@ -13,6 +13,7 @@ import MenuButton from "./MenuButton/MenuButton";
 import LoginButton from "./LoginButton/LoginButton";
 import { Outlet } from "react-router-dom";
 import MobileCart from "../NavbarMobile/MobileCart/MobileCart";
+import WhatsAppLink from "../../../../../pages/whatapp/WhatsAppLink";
 
 const NavbarDesktop = () => {
   return (
@@ -78,6 +79,7 @@ const NavbarDesktop = () => {
       >
         <Toolbar />
         <Outlet />
+        <WhatsAppLink/>
       </Box>
     </>
   );

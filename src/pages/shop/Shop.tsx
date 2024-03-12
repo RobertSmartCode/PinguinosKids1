@@ -13,6 +13,7 @@ import { Product } from '../../type/type';
 import { useTheme, useMediaQuery } from '@mui/material';
 import Filter from "./Filter";
 import SelectionCard from "../../components/pageComponents/SelectionCard/SelectionCard";
+import Footer from "../../components/common/Footer/Footer";
 
 const Shop: React.FC = () => {
  
@@ -289,8 +290,11 @@ const Shop: React.FC = () => {
             </Grid>
           ))}
         </Grid>
+          <Footer /> 
       </Grid>
+      
        )}
+     
     </div>
   );
   

@@ -9,7 +9,6 @@ import { Box, Toolbar, Typography } from "@mui/material";
 import Search from "./Search"; 
 import { useNavigate } from 'react-router-dom';
 import { useSearchContext } from "../../../../../../context/SearchContext"; 
-import Footer from '../../../../Footer/Footer';
 
 
 
@@ -183,10 +182,8 @@ const SearchBar: React.FC = () => {
       </Drawer>
       </Toolbar>
 )}
- <Footer /> 
       
     </Box>
-    
   );
 };
 

@@ -2,6 +2,7 @@ import React from "react";
 import HomeBanner from "./HomeBanner";
 import BestSellers from "./BestSellers";
 import NewArrivals from "./NewArrivals";
+import Footer from "../../components/common/Footer/Footer";
 
 const Home: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const Home: React.FC = () => {
       <HomeBanner/>
       <NewArrivals/>
       <BestSellers/>
-      
+      <Footer /> 
     </div>
   );
 };
