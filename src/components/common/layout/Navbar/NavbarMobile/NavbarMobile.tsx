@@ -14,6 +14,7 @@ import MobileMenuList from "./MobileMenuList/MobileMenuList";
 import MobileLogo from "./MobileLogo/MobileLogo";
 import SearchBar from "./SearchBar/SearchBar";
 import MobileCart from './MobileCart/MobileCart';
+import WhatsAppLink from "../../../../../pages/whatapp/WhatsAppLink";
 
 // Define colores personalizados
 const customColors = {
@@ -106,6 +107,7 @@ const NavbarMobile = (props:any) => {
       >
         <Toolbar />
         <Outlet />
+        <WhatsAppLink/>
       </Box>
     </Box>
   );

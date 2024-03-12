@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../firebase/firebaseConfig";
 import { collection, query, getDocs } from "firebase/firestore";
 import { Link } from "react-router-dom";
-import { Grid, Card, CardContent, Typography, Button, IconButton, Box } from "@mui/material";
+import { Grid, Card, CardContent, Typography, Button, IconButton, Box, CardMedia } from "@mui/material";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import FilterProduct from "./FilterProducts"; 
 import { useFilterContext } from "../../context/FilterContext";
@@ -36,6 +36,8 @@ const Shop: React.FC = () => {
       return newCount;
     });
   };
+
+  
   useEffect(() => {
 
  
@@ -158,23 +160,9 @@ const Shop: React.FC = () => {
     padding: '8px',
   };
 
-  const productStyles = {
-    border: "1px solid gray",
-    padding: '8px',
-    marginBottom: '8px',
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    textAlign: "center",
-    backgroundColor: customColors.secondary.main,
-    color: customColors.primary.main,
-  };
+ 
 
-  const productImageStyles = {
-    width: "100%", 
-    marginBottom: '8px',
-    borderBottom: "1px solid #000",
-  };
+  const productStyles = { border: "1px solid gray", padding: '8px', marginBottom: '8px', display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", backgroundColor: '#fff', color: '#000' };
   
   const productTitleStyles = {
     fontSize: "1rem",
@@ -242,12 +230,22 @@ const Shop: React.FC = () => {
           {products.map((product) => (
             <Grid item xs={6} sm={4} md={3} lg={3} key={product.id}>
               <Card sx={productStyles}>
-                <img
-                src={product.images[0]}
-                alt={product.title}
-                style={productImageStyles}
-                onLoad={handleImageLoad} 
-                />
+              
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={product.images[0]}
+                    alt={product.title}
+                    onLoad={handleImageLoad}
+                    style={{
+                      objectFit: "contain",
+                      width: "100%",
+                      marginBottom: "8px",
+                      zIndex: 0,
+                      transition: "transform 0.3s ease-in-out",
+                    
+                    }}
+                  />
                {selectedProduct === product ?  (
                   <SelectionCard
                     isOpen={true}

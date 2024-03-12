@@ -3,7 +3,7 @@ import React, { useEffect, useState} from "react";
 import { db } from "../../firebase/firebaseConfig";
 import { getDocs, collection } from "firebase/firestore";
 import { Link } from "react-router-dom";
-import { Grid, Card, CardContent, Typography, Button, IconButton, Box } from "@mui/material";
+import { Grid, Card, CardContent, Typography, Button, IconButton, Box, CardMedia } from "@mui/material";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import {Product} from "../../type/type"
 import SelectionCard from "../../components/pageComponents/SelectionCard/SelectionCard";
@@ -83,12 +83,7 @@ useEffect(() => {
     color: customColors.primary.main,
   };
 
-  const productImageStyles = {
-    width: "100%", 
-    marginBottom: '8px',
-    borderBottom: "1px solid #000",
-  };
-  
+ 
 
   const productTitleStyles = {
     fontSize: "1rem",
@@ -147,12 +142,21 @@ useEffect(() => {
       {products.map((product) => (
         <Grid item xs={6} sm={4} md={4} lg={3} key={product.id}>
           <Card sx={productStyles}>
-            <img 
-            src={product.images[0]}
-            alt={product.title}
-            style={productImageStyles}
-            onLoad={handleImageLoad} 
-            />
+          <CardMedia
+                    component="img"
+                    height="140"
+                    image={product.images[0]}
+                    alt={product.title}
+                    onLoad={handleImageLoad}
+                    style={{
+                      objectFit: "contain",
+                      width: "100%",
+                      marginBottom: "8px",
+                      zIndex: 0,
+                      transition: "transform 0.3s ease-in-out",
+                    
+                    }}
+                  />
              {selectedProduct === product ?  (
                   <SelectionCard
                     isOpen={true}

@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import NavbarMobile from '../NavbarMobile/NavbarMobile';
 import NavbarDesktop from '../NavbarDesktop/NavbarDesktop';
+import WhatsAppLink from "../../../../../pages/whatapp/WhatsAppLink";
 
 function App() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
   // Función para actualizar el estado de isMobile cuando cambie el tamaño de la ventana
   const handleResize = () => {
-    setIsMobile(window.innerWidth < 768);
+    setIsMobile(window.innerWidth < 1024);
   };
+
 
   useEffect(() => {
     // Agregar un event listener para detectar cambios en el tamaño de la ventana
@@ -24,6 +26,7 @@ function App() {
     <div className="app">
       {isMobile ? <NavbarMobile /> : <NavbarDesktop />}
       {/* Resto de tu contenido de la aplicación */}
+      <WhatsAppLink/>
     </div>
   );
 }
