@@ -163,7 +163,7 @@ const SearchBar: React.FC = () => {
           }}
         >
           <InputBase
-            placeholder="¿Qué estás buscando?"
+            placeholder="¿Qué piensas cómprar hoy?"
             fullWidth
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}

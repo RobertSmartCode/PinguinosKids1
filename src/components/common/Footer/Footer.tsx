@@ -16,7 +16,7 @@ const Footer = () => {
           <Typography variant="body2" gutterBottom>
           
                 Dirección: Rivadavia 2757, local 9, Galeria Wuilly <br />
-                Teléfono: +5491136557584<br />
+                Teléfono: +5491136221705<br />
                 Correo electrónico: pinguinoskidsonce@gmail.com<br />
              
           </Typography>

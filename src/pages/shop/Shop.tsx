@@ -13,7 +13,6 @@ import { Product } from '../../type/type';
 import { useTheme, useMediaQuery } from '@mui/material';
 import Filter from "./Filter";
 import SelectionCard from "../../components/pageComponents/SelectionCard/SelectionCard";
-import Footer from "../../components/common/Footer/Footer";
 
 const Shop: React.FC = () => {
  
@@ -23,7 +22,7 @@ const Shop: React.FC = () => {
   const { sort } = useSortContext()!;
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
   
 
   const [isComponentReady, setIsComponentReady] = useState(false);
@@ -73,31 +72,46 @@ const Shop: React.FC = () => {
     fetchProducts();
   }, []);
 
+
   useEffect(() => {
+    
     const applyFiltersAndSort = () => {
       let filteredProducts = [...allProducts];
 
+ 
+
       if (filter.colors) {
+      
         const selectedColors = Object.keys(filter.colors).filter(
           (color) => filter.colors[color]
         );
+      
+   
         if (selectedColors.length > 0) {
           filteredProducts = filteredProducts.filter((product) =>
-            selectedColors.includes(product.colors[0].color)
+            product.colors.some((productColor) => selectedColors.includes(productColor.color))
           );
         }
       }
+      
+
+     
 
       if (filter.sizes) {
+       
         const selectedSizes = Object.keys(filter.sizes).filter(
           (size) => filter.sizes[size]
         );
+      
+        
         if (selectedSizes.length > 0) {
           filteredProducts = filteredProducts.filter((product) =>
-            selectedSizes.some((size) => product.sizes.includes(size))
-          );
+          product.colors.some((color) => color.sizes.some((size) => selectedSizes.includes(size)))
+        );
+        
         }
       }
+
 
        // Nuevo bloque para filtrar por rango de precios
     if (filter.priceRange.from && filter.priceRange.to) {
@@ -290,11 +304,8 @@ const Shop: React.FC = () => {
             </Grid>
           ))}
         </Grid>
-          <Footer /> 
       </Grid>
-      
        )}
-     
     </div>
   );
   

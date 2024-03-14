@@ -9,7 +9,7 @@ import PriceRangeFilter from "./PriceRangeFilter";
 
 const Filter: React.FC = () => {
 
-  const isMobile = useMediaQuery('(max-width:600px)');
+  const isMobile = useMediaQuery('(max-width:1120px)');
   // Lista de colores y tallas
 
   const colorOptions = ["Azul", "Rosado", "Fucsia", "Chicle", "Lila", "Gris", "Amarillo", "Verde", "Blanco"];
@@ -76,7 +76,11 @@ const Filter: React.FC = () => {
       priceRange: { ...tempPriceRange },
     });
   };
+  
 
+  // console.log("Render - colors:", colors);
+  // console.log("Render - sizes:", sizes);
+  // console.log("Render - tempPriceRange:", tempPriceRange);
 
   const customColors = {
     primary: {
