@@ -3,7 +3,7 @@ import { Tooltip } from '@mui/material';
 import { FaWhatsapp } from 'react-icons/fa';
 
 const WhatsAppLink: React.FC = () => {
-  const phoneNumber = '+5491136557584';
+  const phoneNumber = '+5491136221705';
   const message = 'Hola, quiero saber más sobre Pinguinos Kids.';
   const encodedMessage = encodeURIComponent(message);
   const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
